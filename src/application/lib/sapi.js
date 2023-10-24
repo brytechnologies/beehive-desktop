@@ -36,7 +36,7 @@ export async function getEnabledNodes() {
         const localServers = window.sessionStorage.getItem(SAPI_SERVERS_KEY);
         if (localServers) return JSON.parse(window.sessionStorage.getItem(SAPI_SERVERS_KEY));
 
-        const nodes = await request.get(`https://sapi.smartcash.cc/v1/smartnode/check/ENABLED`, {
+        const nodes = await request.get(`https://209.126.11.191/v1/smartnode/check/ENABLED`, {
             json: true,
             cache: true,
         });
@@ -469,7 +469,7 @@ export async function getChatTransactionHistory(address, pageSize = 5) {
     try {
         var options = {
             method: 'POST',
-            uri: `https://sapi.smartcash.cc/v1/address/transactions`,
+            uri: `https://209.126.11.191/v1/address/transactions`,
             body: {
                 address,
                 pageNumber: 1,
@@ -487,7 +487,7 @@ export async function getChatTransactionHistory(address, pageSize = 5) {
 
 export async function getTransactionHistoryFromMemoryPool(address) {
     try {
-        const transactions = await request.get(`https://sapi.smartcash.cc/v1/address/mempool/${address}`, {
+        const transactions = await request.get(`https://209.126.11.191/v1/address/mempool/${address}`, {
             json: true,
         });
         const mappedTx = await Promise.all(
